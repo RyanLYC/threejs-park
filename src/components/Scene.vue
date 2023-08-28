@@ -1,5 +1,5 @@
 <template>
-  <div class="scene" ref="sceneDiv">6666</div>
+  <div class="scene" ref="sceneDiv"></div>
 </template>
 
 <script lang="ts" setup>
@@ -7,7 +7,7 @@ import { onMounted, ref } from 'vue'
 // 导入场景
 import scene from '@/three/scene'
 //导入相机
-import camera from '@/three/camera'
+import cameraModule from '@/three/camera'
 // 导入渲染器
 import renderer from '@/three/renderer'
 // 导入gui对象
@@ -18,11 +18,13 @@ import axesHelper from '@/three/axesHelper'
 import animate from '@/three/animate'
 // 导入添加物体函数
 import createMesh from '@/three/createMesh'
+// 初始化调整屏幕
+import '@/three/init'
 
 // 场景元素div
 let sceneDiv = ref<HTMLElement>()
 // 添加相机
-scene.add(camera)
+scene.add(cameraModule.activeCamera)
 // 添加辅助坐标轴
 scene.add(axesHelper)
 // 创建物体
